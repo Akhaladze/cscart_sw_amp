@@ -1,0 +1,13 @@
+msgid ""
+msgstr "Project-Id-Version: tygh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: English\n"
+"Language: en_US"
+
+msgctxt "Addons::name::amp_sw"
+msgid "amp_sw_title"
+msgstr "Google AMP Pages Module"
+
+msgctxt "Addons::description::amp_sw"
+msgid "amp_sw_description"
+msgstr "This module implement page header modifications for such pages: Categories, Goods Pages, Blog Pages"

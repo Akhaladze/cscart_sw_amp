@@ -1,0 +1,22 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cs-cart-latest\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Russian\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: cs-cart-latest\n"
+"X-Crowdin-Language: ru\n"
+"X-Crowdin-File: /release-4.8.2/addons/my_changes.po\n"
+"Last-Translator: cscart <translations@cs-cart.com>\n"
+"PO-Revision-Date: 2018-08-20 09:09\n"
+
+msgctxt "Addons::name::amp_sw"
+msgid "amp_sw_title"
+msgstr "Google AMP Pages Module"
+
+msgctxt "Addons::description::amp_sw"
+msgid "amp_sw_description"
+msgstr "Специальный модуль Google AMP Pages: Categories, Goods, Blog pages"
+
