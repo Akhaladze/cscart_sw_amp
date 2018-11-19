@@ -73,7 +73,7 @@ use cybercog\yii\googleanalytics\widgets\GATracking;
     <div class="ampstart-headerbar-fixed center m0 p0 flex justify-center nowrap absolute top-0 right-0 pt2 pr3">
       <div class="mr2">
       </div>
-        <a href="cart.amp.html" class="text-decoration-none mr2 ampstart-headerbar-fixed-link ">
+        <a href="https://amp.akademorto.kz/frontend/web/img/patern/e-commerce/templates/cart.amp.html" class="text-decoration-none mr2 ampstart-headerbar-fixed-link ">
           
           <div class="ampstart-headerbar-icon-wrapper relative"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 37 35"><g><path d="M.8.47598c-.4 0-.8.3-.8.8s.4.9.8.9h4.4l4.4 21.6c0 .5.4 1 .9.9h21c.4 0 .9-.4.9-.9s-.4-.9-.9-.9H11.2l-.7-3.5h22.7c.4 0 .7-.3.8-.7l2.9-13c.1-.5-.3-1.1-.8-1.1H7.5l-.8-3.5c-.1-.3-.4-.6-.8-.6H.8zm7 6h27.3l-2.6 11.3H10.1l-2.3-11.3zm6.9 19.9c-2.1 0-3.8 1.8-3.8 3.9s1.7 3.9 3.8 3.9c2.1 0 3.8-1.8 3.8-3.9 0-2.1-1.7-3.9-3.8-3.9zm12.6 0c-2.1 0-3.8 1.8-3.8 3.9s1.7 3.9 3.8 3.9c2.1 0 3.8-1.8 3.8-3.9 0-2.1-1.7-3.9-3.8-3.9zm-12.6 1.7c1.2 0 2.1 1 2.1 2.2 0 1.2-.9 2.2-2.1 2.2-1.2 0-2.1-1-2.1-2.2 0-1.2.9-2.2 2.1-2.2zm12.6 0c1.2 0 2.1 1 2.1 2.2 0 1.2-.9 2.2-2.1 2.2-1.2 0-2.1-1-2.1-2.2 0-1.2 1-2.2 2.1-2.2z" fill="#222"></path></g></svg></div>
         </a>
@@ -89,7 +89,7 @@ use cybercog\yii\googleanalytics\widgets\GATracking;
   <nav class="ampstart-sidebar-nav ampstart-nav">
     <ul class="list-reset m0 p0 ampstart-label">
         <li>
-          <a href="landing.amp.html" class="text-decoration-none block 22">
+          <a href="https:://akademorto.kz" class="text-decoration-none block 22">
           <amp-img src="<?=$this->params['logo_path'];?>" width="100" height="118" layout="responsive" class="ampstart-sidebar-nav-image inline-block mb4" alt="Company logo" noloading="">
             <div placeholder="" class="commerce-loader"></div>
           </amp-img>
@@ -187,10 +187,3 @@ use cybercog\yii\googleanalytics\widgets\GATracking;
 </body>
 </html>
 
-  
-  
-  
-  
-  
-  
-  

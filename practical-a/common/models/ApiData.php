@@ -100,6 +100,120 @@ class ApiData
 	} else return false;
 }
 
+public function API_GetGoodDiscusById ($id) {
+
+		$client = new Client([
+		'baseUrl' => 'https://akademorto.kz/api/2.0/products/' . $id . '/discussions',
+		'requestConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		'responseConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		]);
+		$response = $client->createRequest()
+		->setMethod('get')
+		->setFormat(Client::FORMAT_JSON)
+		->setUrl('https://akademorto.kz/api/2.0/products/' . $id . '/discussions')
+		->addHeaders(['Authorization' => 'Basic '.base64_encode($this->user_login . ":" . $this->user_password)])
+		->addHeaders(['Content-type:' => 'application/json'])
+		->send();
+		if ($response->isOk) {
+		//$parser = new XmlParser;
+		$parser = new \yii\httpclient\JsonParser;
+		$response = $parser->parse($response);
+		//$api_data_mes =  $parser->parse($response);
+		
+		return $response;
+	} else return false;
+}
+
+
+public function API_GetFutById ($id) {
+
+		$client = new Client([
+		'baseUrl' => 'https://akademorto.kz/api/2.0/products/' . $id . '/features',
+		'requestConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		'responseConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		]);
+		$response = $client->createRequest()
+		->setMethod('get')
+		->setFormat(Client::FORMAT_JSON)
+		->setUrl('https://akademorto.kz/api/2.0/products/' . $id . '/features')
+		->addHeaders(['Authorization' => 'Basic '.base64_encode($this->user_login . ":" . $this->user_password)])
+		->addHeaders(['Content-type:' => 'application/json'])
+		->send();
+		if ($response->isOk) {
+		//$parser = new XmlParser;
+		$parser = new \yii\httpclient\JsonParser;
+		$response = $parser->parse($response);
+		//$api_data_mes =  $parser->parse($response);
+		
+		return $response;
+	} else return false;
+}
+
+public function API_GetOptionsById ($id) {
+
+		$client = new Client([
+		'baseUrl' => 'https://akademorto.kz/api/2.0/options?product_id=' . $id,
+		'requestConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		'responseConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		]);
+		$response = $client->createRequest()
+		->setMethod('get')
+		->setFormat(Client::FORMAT_JSON)
+		->setUrl('https://akademorto.kz/api/2.0/options?product_id=' . $id)
+		->addHeaders(['Authorization' => 'Basic '.base64_encode($this->user_login . ":" . $this->user_password)])
+		->addHeaders(['Content-type:' => 'application/json'])
+		->send();
+		if ($response->isOk) {
+		//$parser = new XmlParser;
+		$parser = new \yii\httpclient\JsonParser;
+		$response = $parser->parse($response);
+		//$api_data_mes =  $parser->parse($response);
+		
+		return $response;
+	} else return false;
+}
+
+
+public function API_GetOptions2ById ($id) {
+
+		$client = new Client([
+		'baseUrl' => 'https://akademorto.kz/api/2.0/options/' . $id,
+		'requestConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		'responseConfig' => [
+        'format' => Client::FORMAT_JSON
+		],
+		]);
+		$response = $client->createRequest()
+		->setMethod('get')
+		->setFormat(Client::FORMAT_JSON)
+		->setUrl('https://akademorto.kz/api/2.0/options/id/' . $id)
+		->addHeaders(['Authorization' => 'Basic '.base64_encode($this->user_login . ":" . $this->user_password)])
+		->addHeaders(['Content-type:' => 'application/json'])
+		->send();
+		if ($response->isOk) {
+		//$parser = new XmlParser;
+		$parser = new \yii\httpclient\JsonParser;
+		$response = $parser->parse($response);
+		//$api_data_mes =  $parser->parse($response);
+		
+		return $response;
+	} else return false;
+}
+
 
 		public function API_GetCatById ($id) {
 

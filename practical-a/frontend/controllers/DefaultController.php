@@ -150,7 +150,19 @@ global $company;
 	
 	if ($good_id = Yii::$app->request->get('id')) {
 	$good_page_request = new ApiData;
-	$good_data = $good_page_request->API_GetPageById($good_id);
+	
+	$good_data_discussions = $good_page_request->API_GetGoodDiscusById($good_id);
+	$good_data_fut = $good_page_request->API_GetFutById($good_id);
+	$good_data = $good_page_request->API_GetGoodById($good_id);
+	$good_options = $good_page_request->API_GetOptionsById($good_id);
+	
+	
+	//$good_options2 = $good_page_request->API_GetOptions2ById($op_id);
+	//$options =  $good_options;
+	$options = array_shift ( $good_options);
+
+	
+	
 	
 	// Найдем все предидущие страницы и найдем путь канонической страницы
 	
@@ -164,6 +176,36 @@ global $company;
 			$cannonical_page_path .= '/' . $good_data_deep['seo_name'];
 		
 	}
+	
+	/*Характеристики в массив*/
+	
+	
+	$i =0;
+	$futures= Array();
+	
+						
+						foreach ($good_data_fut['features'] as $variant) {
+							
+								
+							
+							foreach ($variant['variants'] as $var) {
+							
+							if ($variant['feature_id']==$var['feature_id']) {
+							
+							$futures+=[$variant['description'] => $var['variant']];
+						
+								break;
+							}
+						}
+							
+						
+				$i++;
+						
+			}
+
+			
+			
+			
 	
 		
 		$cannonical_page_path .= '/' . $good_data['seo_name'];
@@ -193,15 +235,30 @@ global $company;
 		
 		
 		
-		$this->view->params['page'] = $good_data['page'];
+		$this->view->params['page'] = $good_data['product'];
 		$this->view->params['meta_description'] = $good_data['meta_description'];
-		$this->view->params['timestamp'] = $good_data['timestamp'];
-		$this->view->params['author'] = $good_data['author'];
-
-		$this->view->params['image'] = $good_data['main_pair']['icon']['image_path'];
-		$this->view->params['image_x'] = $good_data['main_pair']['icon']['image_x'];
-		$this->view->params['image_y'] = $good_data['main_pair']['icon']['image_y'];
-	
+		$this->view->params['keywords'] = $good_data['meta_keywords'];
+		
+		
+	//	foreach ($good_data['main_pair'] as $images); {
+			
+		//	echo $images['image_path'];
+			
+	//	}
+		
+		
+		//$image_add = $good_data['image_pairs'];
+		
+		//print_r($image_add);
+		//die();
+		
+		
+		
+		
+		
+		//die();
+		/*print_r($good_data['image_pairs']);
+		die();*/
 		
 		
 		$this->layout = '@app/views/layouts/good_layout.php';
@@ -209,6 +266,11 @@ global $company;
 		 return $this->render('good', 
 			 [
 			 
+			 'good_data_discussions'	=> $good_data_discussions,
+			 'good_data_fut'	=> $good_data_fut,
+			 'futures'	=> $futures,
+			 'options'	=> $options,
+			 'good_options'	=> $good_options,
 			 'good_data'	=> $good_data,
 			 'company'		=> $company,
 			 'cannonical_page_path'		=> $cannonical_page_path,
