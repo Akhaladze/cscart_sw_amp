@@ -1,0 +1,12 @@
+Here is special web application that provide Google AMP standard compatibility for Simtech CS-CART e-commerce platform. 
+Both application working under PHP 7.2 and now in DEV stage. 
+Who is this work?
+
+Theare two application now saving here: 
+- CS-CART Plugin that provide modification on the CS-CART site, and add special changes in head on HTML <head> section at the cs-cart, 
+that add <amphtml link> tag with link to second application, writing on Yii2 framework (advanced patterd improved by 
+good knowning Yii developer - Kartik/Kraji)
+
+Both application interoperate via REST API based on cs-cart server side.
+
+To be continiue....
