@@ -59,6 +59,9 @@ return [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => true,
             'showScriptName' => false,
+			
+		//	'suffix' => '/',
+			
 			'hostInfo' => 'https://amp.akademorto.kz',
 			
             'rules' => [
@@ -73,34 +76,48 @@ return [
 			// страницы категорий
 
 			'/cat/' => 'default/cat',
-			'/cat/<catlev1:\w+>/<id:\d+>' => 'default/cat',
-			'/cat/<catlev1:\w+>/<catlev2:\w+>/<id:\d+>' => 'default/cat',
-			'/cat/<catlev1:\w+>/<catlev2:\w+>/<catlev3:\w+>/<id:\d+>' => 'default/cat',
-			'/cat/<catlev1:\w+>/<catlev2:\w+>/<catlev3:\w+>/<catlev4:\w+>/<id:\d+>' => 'default/cat',
+			'/cat/<catlev1>/<id:\d+>' => 'default/cat',
+			'/cat/<catlev1>/<catlev2>/<id:\d+>' => 'default/cat',
+			'/cat/<catlev1>/<catlev2>/<catlev3>/<id:\d+>' => 'default/cat',
+			'/cat/<catlev1>/<catlev2>/<catlev3>/<catlev4>/<id:\d+>' => 'default/cat',
 			
 			// страиницы товара
 			
 			//'/good/' => 'default/good/',
-			'/good/<goodcat1>/<id:\d+>' => 'default/good',
+			//'/good/<goodcat1>/<id:\d+>' => 'default/good',
+			
 			'/good/<catlev1>/<id:\d+>' => 'default/good',
 			'/good/<catlev1>/<goodname>/<id:\d+>' => 'default/good',
 			'/good/<catlev1>/<catlev2>/<goodname>/<id:\d+>' => 'default/good',
 			'/good/<catlev1>/<catlev2>/<catlev3>/<goodname>/<id:\d+>' => 'default/good',
 			'/good/<catlev1>/<catlev2>/<catlev3>/<catlev4>/<goodname>/<id:\d+>' => 'default/good',
 			'/good/<catlev1>/<catlev2>/<catlev3>/<catlev4>/<catlev5>/<goodname>/<id:\d+>' => 'default/good',
+			
+			// json feed for dynamic goods contens
+			// obtaine good information in JSON format for Google AMP library
+			
+			'/catjsonfeed/<id:\d+>/<sort_mode:\w+>' => 'default/catjsonfeed',
+			'/catjsonfeed/<id:\w+>/<sort_mode:\w+>' => 'default/catjsonfeed',
+			'/catjsonfeed/<id:\w>/<sort_mode:\w>' 	=> 'default/catjsonfeed',
+			'/catjsonfeed/<id:\w>/<sort_mode:>' 	=> 'default/catjsonfeed',
+			
+			
+			'/' => 'default/redirect_to_main',
+			
+			
 	[ 
      'class' => 'yii\rest\UrlRule', 
      'controller' => [ 
       'default' 
      ], 
-     
-	 'tokens' => [ 
+
+	  'tokens' => [ 
       '{catlev1}' => '<catlev1:\\w>', 
       '{catlev2}' => '<catlev2:\\w>', 
       '{catlev3}' => '<catlev3:\\w>', 
-      '{catlev4}' => '<catlev4:\\w>', 
       '{catlev5}' => '<catlev5:\\w>', 
       '{goodcat1}' => '<goodcat1:\\w>', 
+      '{sort_mode}' => '<sort_mode:\\w>', 
       
 	  '{page_name}' => '<page_name:\\w>', 
       '{goodname}' => '<goodname:\\w>', 

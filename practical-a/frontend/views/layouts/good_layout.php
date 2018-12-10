@@ -52,8 +52,8 @@ use cybercog\yii\googleanalytics\widgets\GATracking;
   <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4 pt2 md-pt0">
     <div role="button" aria-label="open sidebar" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger  pr2 absolute top-0 pr0 mr2 mt2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" class="block"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
     </div>
-      <a href="landing.amp.html" class="text-decoration-none inline-block mx-auto ampstart-headerbar-home-link mb1 md-mb0 ">
-        <amp-img src="<?=$this->params['logo_path'];?>" width="100" height="118" layout="fixed" class="my0 mx-auto " alt=""></amp-img>
+      <a href="amp.akademorto.kz" class="text-decoration-none inline-block mx-auto">
+      https://akademorto.kz
       </a>
     <!--
       TODO: currently "fixeditems" is an array, therefore it's not possible to
@@ -90,14 +90,14 @@ use cybercog\yii\googleanalytics\widgets\GATracking;
     <ul class="list-reset m0 p0 ampstart-label">
         <li>
           <a href="https:://akademorto.kz" class="text-decoration-none block 22">
-          <amp-img src="<?=$this->params['logo_path'];?>" width="100" height="118" layout="responsive" class="ampstart-sidebar-nav-image inline-block mb4" alt="Company logo" noloading="">
-            <div placeholder="" class="commerce-loader"></div>
-          </amp-img>
+
+            <div placeholder="" class="commerce-loader">https:://akademorto.kz</div>
+
           </a>
         </li>
-          <li class="ampstart-nav-item "><a class="ampstart-nav-link" href="product-listing.amp.html">Калалог</a></li>
-          <li class="ampstart-nav-item "><a class="ampstart-nav-link" href="blog-listing.amp.html">Блог</a></li>
-          <li class="ampstart-nav-item "><a class="ampstart-nav-link" href="contact.amp.html">Контакты</a></li>
+          <li class="ampstart-nav-item "><a class="ampstart-nav-link" href="https://akademorto.kz/obuv/">Каталог</a></li>
+          <li class="ampstart-nav-item "><a class="ampstart-nav-link" href="https:://akademorto.kz/shkola/">Блог</a></li>
+          <li class="ampstart-nav-item "><a class="ampstart-nav-link" href="https:://akademorto.kz">Контакты</a></li>
     </ul>
   </nav>
 
@@ -119,7 +119,7 @@ use cybercog\yii\googleanalytics\widgets\GATracking;
     <ul class="ampstart-sidebar-faq list-reset m0">
         <li class="ampstart-faq-item"><a href="<?php echo $this->params['contacts_link']?>" class="text-decoration-none">Контакты</a></li>
         <li class="ampstart-faq-item"><a href="<?php echo $this->params['returns_link']?>" class="text-decoration-none">Возвраты</a></li>
-        <li class="ampstart-faq-item"><a href="#" class="text-decoration-none">Cookie &amp; </a></li>
+        <li class="ampstart-faq-item"><a href="#" class="text-decoration-none">О Нас</a></li>
     </ul>
 
 

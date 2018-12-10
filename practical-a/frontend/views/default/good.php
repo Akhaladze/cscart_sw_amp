@@ -111,31 +111,31 @@
 
         <div class="col-6 self-start pb4">
 			<div class="commerce-select-wrapper inline-block  ">
-  <label for="sizes" class="bold caps h6 md-h7">Опции: </label>
-		<amp-selector class="inline-block" name="size" layout="container" [selected]="product.selectedSize" on="select:AMP.setState({
-                              product: {
-                                selectedSize: event.targetOption
-                              }
-                            })"> 
+			<label for="sizes" class="bold caps h6 md-h7">Опции: </label>
+				<amp-selector class="inline-block" name="size" layout="container" [selected]="product.selectedSize" on="select:AMP.setState({
+									  product: {
+										selectedSize: event.targetOption
+									  }
+									})"> 
 
-		<select name="sizes" id="sizes" class="commerce-select h6 md-h7">
-    
-	<?php
-		$couter_odd=0;
-		foreach ($options['variants'] as $value) {
-						
-					if	($couter_odd %2 == 0) { echo '<option value="' . $value['variant_name'] . '">' . $value['variant_name'] . '-' . $value['modifier'] . '</option>';} 
+								<select name="sizes" id="sizes" class="commerce-select h6 md-h7">
+							
+							<?php
+								$couter_odd=0;
+								foreach ($options['variants'] as $value) {
+												
+											if	($couter_odd %2 == 0) { echo '<option value="' . $value['variant_name'] . '">' . $value['variant_name'] . '-' . $value['modifier'] . '</option>';} 
+										
+										
+										$couter_odd++;
+										}
+										$option_def = $value['variant_name'];
+										?>
+			
+				</select>
+				</amp-selector>
 				
-				
-				$couter_odd++;
-				}
-				$option_def = $value['variant_name'];
-				?>
-	
-		</select>
-    </amp-selector>
-		
-</div>
+			</div>
         </div>
 		
 <amp-state id="product">
@@ -212,7 +212,7 @@
   
 <?php if (isset($good_data['main_pair']['detailed']['image_path'])) { 
 	
-	echo '"' . $good_data['main_pair']['detailed']['image_path'] . '",';
+		echo '"' . $good_data['main_pair']['detailed']['image_path'] . '",';
 }
    if (isset($good_data['image_pairs']))  {
 	
@@ -232,8 +232,8 @@
   },
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.4",
-    "reviewCount": "89"
+    "ratingValue": "4.<?=rand(1,5 )?>",
+    "reviewCount": "<?=if(isset($good_data_discussions['params']['total_items'])){echo $good_data_discussions['params']['total_items'])} else { echo '0';}?>"
   },
   "offers": {
     "@type": "Offer",
@@ -263,7 +263,17 @@
   
 
 
-  <?php if (isset($good_data_discussions['discussions'][0]['name']) && null!=$good_data_discussions['discussions'][0]['name']) {
+  <?php 
+  
+  var_dump($good_data_discussions);
+  
+  foreach($good_data_discussions as $review){
+	  
+	  print_r($review);
+	  
+  }
+  
+	if (isset($good_data_discussions['discussions'][0]['name']) && null!=$good_data_discussions['discussions'][0]['name']) {
 	  foreach ($good_data_discussions['discussions'] as $review) {
 		   
 		echo '<section class="mb3">  <h3 class="h7 mb1">' . $review["name"] . '</h3>';
@@ -291,7 +301,15 @@ while ($rating_value_zero < 5) {
    echo '<p class="mt1">' . $review['message'] . '</p>';
    
 	  }
-	  }  
+	  
+	  
+	  }  else {
+		  
+		  echo "У этого товара еще нет отзывов, вы можете сделать первый!";
+		  
+		  echo "Также Вы можете задать вопрос на странице отзывов и предложений";
+		  
+	  }
 ?>
   </section>
 
@@ -306,36 +324,37 @@ while ($rating_value_zero < 5) {
 	   <div class="col-12 md-col-5 md-pr7 md-pl5">
           <section class="pt3 pb3 md-pb4 px2 md-pt6">
 <?php /* Вспомогательная информация */?>            
-		   <h2 class="h5 md-h4">Size Guide</h2>
+		   <h2 class="h5 md-h4">Таблица размеров</h2>
             <div class="mt2">
               <table class="commerce-table center">
                 <thead class="commerce-table-header h7">
                   <tr>
-                    <th>Rider Height</th>
-                    <th colspan="2">Suggested Size</th>
+                    <th>Размер</th>
+                    <th colspan="2">Длина стопы</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>160cm-168cm</td>
-                    <td>47-48cm</td>
-                    <td>xx-small</td>
+                    <td>37</td>
+                    <td>230</td>
+                    <td>220</td>
                   </tr>
                   <tr>
-                    <td>152cm-160cm</td>
-                    <td>49-50cm</td>
-                    <td>x-small</td>
+                    <td>38</td>
+                    <td>230</td>
+                    <td>220</td>
                   </tr>
                   <tr>
-                    <td>148cm-152cm</td>
-                    <td>49-50cm</td>
-                    <td>x-small</td>
+                    <td>39</td>
+                    <td>230</td>
+                    <td>220</td>
                   </tr>
+                 
                 </tbody>
               </table>
             </div>
           </section>
-<?php /* Вспомогательная информация КОНЕЦ*/?>            
+<?php /* Вспомогательная информация КОНЕЦ */?>            
 		  
 		
           <section class="pt3 pb3 md-pt4 md-pb4 px2">
@@ -345,11 +364,10 @@ while ($rating_value_zero < 5) {
                
 			<?php foreach ($futures as $key => $line) {
 			 
-			echo '<dt class="h7 col-4 sm-col-3 md-col-5 lg-col-4 pb1">' . $key . '</dt>' 
-			. '<dd class="m0 col-8 sm-col-9 md-col-7 lg-col-8 pb1">'.  $line . '</dd>';
+					echo '<dt class="h7 col-4 sm-col-3 md-col-5 lg-col-4 pb1">' . $key . '</dt>' 
+					. '<dd class="m0 col-8 sm-col-9 md-col-7 lg-col-8 pb1">'.  $line . '</dd>';
 		  }
 		  ?>
-			
               </dl>
             </div>
           </section>
@@ -358,77 +376,35 @@ while ($rating_value_zero < 5) {
 	
 <section class="commerce-related-products col-12 px2 md-mt5 md-px4 ">
   <div class="col-12 mt3 md-mt4">
-    <h2 class="h5 md-h4">You may also like</h2>
+    <h2 class="h5 md-h4">Вам будет интересно</h2>
     <amp-carousel height="170" layout="fixed-height" type="carousel" class="px4">
       <ul class="list-reset">
           <li class="commerce-related-product inline-block mr2">
             <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-1.jpg" width="1" height="1" layout="responsive" alt="Sprocket Set" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Sprocket Set</h2>
+              <amp-img class="mb2" src="https://akademorto.kz/images/watermarked/1/detailed/1/411d76ea314511e7804ed850e6db9ad8_d8fe67ae703111e7a68d0cc47ab2c024.jpg" width="1" height="1" layout="responsive" alt="Sprocket Set" noloading="">
+			<div placeholder="" class="commerce-loader"></div>              </amp-img>
+              <h2 class="commerce-related-product-name h6"><?php /* */?>Тутор, Сурсил, ОФ, 20000Тг</h2>
             </a>
           </li>
-          <li class="commerce-related-product inline-block mr2">
+		            <li class="commerce-related-product inline-block mr2">
             <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-2.jpg" width="1" height="1" layout="responsive" alt="Fixie Blue" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Fixie Blue</h2>
+              <amp-img class="mb2" src="https://akademorto.kz/images/watermarked/1/detailed/1/411d76ea314511e7804ed850e6db9ad8_d8fe67ae703111e7a68d0cc47ab2c024.jpg" width="1" height="1" layout="responsive" alt="Sprocket Set" noloading="">
+			<div placeholder="" class="commerce-loader"></div>              </amp-img>
+              <h2 class="commerce-related-product-name h6"><?php /* */?>Тутор, Сурсил, ОФ, 20000Тг</h2>
             </a>
           </li>
-          <li class="commerce-related-product inline-block mr2">
+		            <li class="commerce-related-product inline-block mr2">
             <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-3.jpg" width="1" height="1" layout="responsive" alt="Chain set" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Chain set</h2>
+              <amp-img class="mb2" src="https://akademorto.kz/images/watermarked/1/detailed/1/411d76ea314511e7804ed850e6db9ad8_d8fe67ae703111e7a68d0cc47ab2c024.jpg" width="1" height="1" layout="responsive" alt="Sprocket Set" noloading="">
+			<div placeholder="" class="commerce-loader"></div>              </amp-img>
+              <h2 class="commerce-related-product-name h6"><?php /* */?>Тутор, Сурсил, ОФ, 20000Тг</h2>
             </a>
           </li>
-          <li class="commerce-related-product inline-block mr2">
+		            <li class="commerce-related-product inline-block mr2">
             <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-4.jpg" width="1" height="1" layout="responsive" alt="Leather Saddle" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Leather Saddle</h2>
-            </a>
-          </li>
-          <li class="commerce-related-product inline-block mr2">
-            <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-5.jpg" width="1" height="1" layout="responsive" alt="16-Speed" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">16-Speed</h2>
-            </a>
-          </li>
-          <li class="commerce-related-product inline-block mr2">
-            <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-6.jpg" width="1" height="1" layout="responsive" alt="Red Cruiser" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Red Cruiser</h2>
-            </a>
-          </li>
-          <li class="commerce-related-product inline-block mr2">
-            <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-7.jpg" width="1" height="1" layout="responsive" alt="Horn Handles" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Horn Handles</h2>
-            </a>
-          </li>
-          <li class="commerce-related-product inline-block mr2">
-            <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-8.jpg" width="1" height="1" layout="responsive" alt="Caliper Brakes" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Caliper Brakes</h2>
-            </a>
-          </li>
-          <li class="commerce-related-product inline-block mr2">
-            <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-9.jpg" width="1" height="1" layout="responsive" alt="Road Bike" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Road Bike</h2>
-            </a>
-          </li>
-          <li class="commerce-related-product inline-block mr2">
-            <a href="product-details.amp.html" class="text-decoration-none">
-              <amp-img class="mb2" src="../img/e-commerce/product/product-10.jpg" width="1" height="1" layout="responsive" alt="Wheel Set" noloading="">
-<div placeholder="" class="commerce-loader"></div>              </amp-img>
-              <h2 class="commerce-related-product-name h6">Wheel Set</h2>
+              <amp-img class="mb2" src="https://akademorto.kz/images/watermarked/1/detailed/1/411d76ea314511e7804ed850e6db9ad8_d8fe67ae703111e7a68d0cc47ab2c024.jpg" width="1" height="1" layout="responsive" alt="Sprocket Set" noloading="">
+			<div placeholder="" class="commerce-loader"></div>              </amp-img>
+              <h2 class="commerce-related-product-name h6"><?php /* */?>Тутор, Сурсил, ОФ, 20000Тг</h2>
             </a>
           </li>
       </ul>
