@@ -49,7 +49,7 @@ use frontend\controllers\DefaultController;
 
 	/*	Your Organization name, description and etc.	*/
 	define ("BLOG_NAME", "Ортошкола");
-	define ("BLOG_DEFAULT_AUTHOR", "Виолетта Иванова");
+	define ("BLOG_DEFAULT_AUTHOR", "Иванов Иван");
 	define ("BLOG_DEFAULT_IMAGE", "https://dummyimage.com/800x450&text=Фото скоро появится");
 	define ("BLOG_DEFAULT_IMAGE_X", "800");
 	define ("BLOG_DEFAULT_IMAGE_Y", "450");
@@ -107,8 +107,8 @@ use frontend\controllers\DefaultController;
 	
 	define("CATEGORIES_POSITIONS_EXCLUDED", "108");
 	/*	API creditnails	*/
-	define("API_Login", "robot@akademorto.kz");
-	define("API_Key", "658lQRJZ3Y4xg28720fw30w01J6aqf2I");
+	define("API_Login", "12345567@akademorto.kz");
+	define("API_Key", "ХХХХХХХХХХХХХХХХХХХХХХХХХХХХ");
 
 /**
  *	API controller operate which REST API v2 interface of CS-CART v4.8	
