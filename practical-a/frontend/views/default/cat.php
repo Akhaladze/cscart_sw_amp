@@ -1,14 +1,6 @@
 <?php 
 //var_dump($cat_data)
 use frontend\controllers\DefaultController; 
-
-
-?>
-
-<main id="content" role="main" class="main commerce-listing">
-
-  
-<?php
 //print($goods);
 //print_r($goods['']);
 ?>
@@ -41,17 +33,16 @@ use frontend\controllers\DefaultController;
 
 		<?php }?>
 <?php }?>
+<hr>
+ 
+  
+  
 
       </div>
+	  
     </div>
 	
-	 <div class="col-3 xs-hide sm-hide flex flex-column">
-    <div class="commerce-side-panel pt4 pr4 self-center">
-    <h2 class="h5 mb2">Ортошкола</h2>
-
-
-     </div>
-    </div>
+	
 	
 
     <div class="col-12 md-col-7 pt2 pb3 md-px4 md-pt1 md-pb7">
@@ -79,7 +70,7 @@ use frontend\controllers\DefaultController;
        
         <div class="commerce-listing-filters pt2 pb2 mb3 md-mb0">
 <div class="commerce-select-wrapper inline-block md-mr1 pl2 md-hide lg-hide">
-  <label for="categories" class="bold caps h6 md-h7">::</label>
+  <label for="categories" class="bold caps h6 md-h7">:Категория:</label>
   <select name="categories" id="categories" class="commerce-select h6 md-h7" on="change: AMP.setState({products: {category: event.value}})">
      
 		<?php if($nested_cats) {?>
@@ -93,8 +84,8 @@ use frontend\controllers\DefaultController;
 
 			{
 			   "category": "<?=$nested_cats['category_id']?>",
-			   "category_name": "",
-			   "filter": "desc"
+			   "category_name": "<?=$nested_cats['category']?>",
+			   "filter": "asc"
 			}
 		</script>
 </amp-state>	
@@ -105,6 +96,7 @@ use frontend\controllers\DefaultController;
 	  
   </select>
 </div>
+<?php /*
 <div class="commerce-select-wrapper inline-block  ">
   <label for="price" class="bold caps h6 md-h7">:</label>
   <select name="price" id="price" class="commerce-select h6 md-h7" on="change: AMP.setState({products: {filter: event.value}})">
@@ -113,15 +105,14 @@ use frontend\controllers\DefaultController;
   </select>
   <label for="price" class="bold caps h6 md-h7">:</label>
 </div>
+*/ ?>
         </div>
       </div>
 	
 	
 	
 	
-	<?php /*
-      <amp-list class="mx1 md-mxn1" [src]="'https://amp.akademorto.kz/frontend/web/img/patern/e-commerce/templates/api/' + products.filter + '-' + products.category + '-products.json'" src="https://amp.akademorto.kz/frontend/web/img/patern/e-commerce/templates/api/high-low-all-products.json" height="1000" width="300" layout="responsive">
-	  */ ?>
+
 	  <amp-list class="mx1 md-mxn1"	[src]="'https://amp.akademorto.kz/catjsonfeed/'+ products.category + '/' + products.filter" src="https://amp.akademorto.kz/catjsonfeed/<?=$cat_id?>/<?=$sort_mode?>"   height="1000" width="300" layout="responsive">
         <template type="amp-mustache">
           <a href="/good/{{category_seo_name }}/{{product_id}}" target="_self" class="commerce-listing-product text-decoration-none inline-block col-6 md-col-4 lg-col-3 px1 mb2 md-mb4 relative">
@@ -131,13 +122,62 @@ use frontend\controllers\DefaultController;
                 <h2 class="commerce-listing-product-name h6">{{ name }}</h2>
                 {{ description }}
               </div>
-              <div class="h6 mt1">{{ price }} <?=DefaultController::currancy_code;?></div>
+              <div class="h6 mt1">{{ price }} <?=CURRANCY_CODE;?></div>
             </div>
           </a>
         </template>
       </amp-list>
+	    <div class="commerce-side-panel pt4 pr4 self-center">
+		<h2 class="h5 mb2">Ортошкола</h2>
+
+  
+
+  
+  <?php foreach($other_posts as $post) {
+  
+  //var_dump($post);
+ // die();
+  
+  ?>
+  <article class="mb2">
+
+	  <?php if(isset($post['main_pair']['icon']['image_path'])) {?>
+			<amp-img 
+			class="mb2"
+			src="<?=$post['main_pair']['icon']['image_path']?>"
+			width="<?=$post['main_pair']['icon']['image_x']?>" 
+			height="<?=$post['main_pair']['icon']['image_y']?>" 
+			layout="responsive" 
+			alt="<?=$post['main_pair']['icon']['alt']?>"> 
+			
+			</amp-img>
+	  <?php } else {?>
+	  
+	  <?php }?>
+	  <hr>
+	  <div class="mb2 md-mx0">
+  
+	  
+        <h3 class="ampstart-heading h4 m0 mb3"><?=$post['page_title']?></h3>
+		  <time datetime="<?=date('Y-m-d H:m', $post['timestamp'])?>" class="block mb2"><?=date('d.m.Y', $post['timestamp'])?></time>
+      <p class="mb2"><?=$post['spoiler']?></p>
+      <a href="<?php echo '/blog/shkola/' . $post['seo_name'] . '/' . $post['page_id'];?>" class="commerce-blog-link inline-block h7 md-mb4" style="text-decoration: line-through">Читать далее</a>
+	  </div>
+	  <br>
+	  <hr>
+  </article>
+  <?php }?>
+
+		
+		
+		
+		
+		
+		
+
+     </div>
     </div>
   </section>
-  </main>
+
   
   <?php //die();?>

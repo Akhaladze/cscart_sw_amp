@@ -1,26 +1,26 @@
 <?php 
 namespace frontend\controllers;
 use common\models\ApiData;
-//header('Content-type:application/json;charset=utf-8');
-//header("Access-Control-Allow-Origin: *");
-//header("Cache-Control: private, no-cache");
-//header("Access-Control-Max-Age: 300");
+
 //header("Access-Control-Allow-Origin: <origin>");
 //header("AMP-Access-Control-Allow-Source-Origin: <source-origin>");
 //header("Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin");
 
 
 	 
-// foreach ($goods['products'] as $item) {
+// foreach ($products['products'] as $item) {
 // var_dump($item);
 //die();
 // }
 
+
+
+
 echo '{
-	"items": [
+	"product": [
 		';
 
-foreach ($goods['products'] as $item) {
+foreach ($products['products'] as $item) {
 	if (isset($first_comma)) {echo ', { ';} else {echo '{ ';}
 	
 	echo '"name" : "' . htmlentities($item['product'], ENT_QUOTES, "UTF-8") . '",';

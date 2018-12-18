@@ -38,3 +38,7 @@ phpunit.phar
 /index.php
 /index-test.php
 /robots.txt
+
+/DefaultController.php
+/ApiData.php
+/main.php
